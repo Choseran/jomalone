@@ -104,13 +104,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
         function preventScroll(e) {
             e.preventDefault();
-            console.log('.');
         }
-        
+
         body.addEventListener('wheel', preventScroll, { passive: false });
         subMenuBtn.addEventListener('click', () => {
             body.removeEventListener("wheel", preventScroll, { passive: false });
         });
+    }
+
+    function preventDefault(e) {
+        e.preventDefault();
+    }
+    function disableScroll() {
+        document.addEventListener('touchmove', preventDefault, { passive: false });
+    }
+    function enableScroll() {
+        document.addEventListener('touchmove', preventDefault);
     }
     
     subMenuBtn.addEventListener("click", function () {
@@ -125,9 +134,11 @@ document.addEventListener("DOMContentLoaded", function () {
             subMenu.classList.add('on');
             header.classList.add('on');
             subMenuScroll();
+            disableScroll();
         } else {
             subMenu.classList.remove('on');
             header.classList.remove('on');
+            enableScroll();
         }
     });
 
@@ -136,9 +147,11 @@ document.addEventListener("DOMContentLoaded", function () {
     for (const submenu of submenuList) {
         const submenuTitle = submenu.querySelector('.submenu_title');
         submenuTitle.addEventListener('click', function () {
-            const submenuLink = submenu.querySelector('.submenu_link');
-
-            submenuLink.classList.toggle('active');
+            for (const submenu of submenuList) {
+                submenu.classList.remove('active');
+            }
+            // toggle 되게... 하기
+            submenu.classList.add('active');
         });
     }
 

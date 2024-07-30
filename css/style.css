@@ -444,7 +444,7 @@ footer .footer_list{
     text-transform: uppercase;
 }
 
-@media (hover:hover) {
+@media (hover:hover) and (min-width: 1211px) {
     .goods_img:hover .hover_bg{
         opacity: 1;
         z-index: 1;
@@ -504,7 +504,7 @@ footer .footer_list{
     }
 }
 
-@media (hover:hover) and (max-width: 1210px) {
+@media (hover:hover) and (max-width: 1210px) and (min-width:768px){
     .sub_menu .submenu_list>li:hover .submenu_link {
         max-height: 0;
     }
@@ -616,12 +616,12 @@ footer .footer_list{
         width: 100%;
         margin-left: 0;
         display: block;
-        overflow-y: scroll;
         padding-bottom: 50px;
     }
     .sub_menu .submenu_list>li{
         margin-right: 0;
         width: 100%;
+        margin-bottom: 30px;
     }
     .sub_menu .submenu_title{
         text-align: left;
@@ -634,9 +634,8 @@ footer .footer_list{
         display: block;
         text-align: left;
     }
-    .sub_menu .submenu_link.active{
+    .sub_menu .active .submenu_link{
         margin-top: 25px;
-        margin-bottom: 30px;
         max-height: 500px;
     }
 
