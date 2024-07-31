@@ -14,21 +14,21 @@ document.addEventListener("DOMContentLoaded", function () {
     
     for (let i = 0; i < bestGoods.length; i++) {
         const goods = bestGoods[i];
-        goods.style.background = `url(./img/best${i+1}.png) no-repeat center top / cover`
+        goods.style.background = `url(./img/best${i+1}.png) no-repeat center bottom / cover`
     }
     
     const newGoods = document.querySelectorAll(".newSwiper .goods_img");
     
     for (let i = 0; i < newGoods.length; i++) {
         const goods = newGoods[i];
-        goods.style.background = `url(./img/new${i+1}.png) no-repeat center top / cover`
+        goods.style.background = `url(./img/new${i+1}.png) no-repeat center bottom / cover`
     }
     
     const onlyGoods = document.querySelectorAll(".only_goods .goods_img");
     
     for (let i = 0; i < onlyGoods.length; i++) {
         const goods = onlyGoods[i];
-        goods.style.background = `url(./img/only_online${i+1}.png) no-repeat center top / cover`
+        goods.style.background = `url(./img/only_online${i+1}.png) no-repeat center bottom / cover`
     }
 
     // swiper

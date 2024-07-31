@@ -380,6 +380,9 @@ header.on .hamMenu span:last-child{
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .only_section .only_goods_content{
     margin-top: 60px;
@@ -573,7 +576,15 @@ footer .footer_list{
     .new_section .container{
         width: calc(100% - 90px);
     }
+    .only_section .container{
+        padding-bottom: 180px;
+    }
 
+    .goods_img{
+        width: 90%;
+        margin: 0 auto;
+        height: 615px !important;
+    }
     .goods_img.active .hover_bg{
         opacity: 1;
         z-index: 1;
@@ -581,6 +592,10 @@ footer .footer_list{
     .goods_img.active svg{
         opacity: 1;
         z-index: 2;
+    }
+
+    .sec_title{
+        font-size: 2.2rem;
     }
 
     header .hamMenu{
@@ -641,7 +656,7 @@ footer .footer_list{
 
     .bannerSwiper{
         height: 300px;
-        margin-bottom: 50px;
+        margin-bottom: 90px;
     }
     .bannerSwiper .banner_content{
         width: calc(100% - 20px);
@@ -666,8 +681,12 @@ footer .footer_list{
         margin-right: 0;
         margin-top: 50px;
     }
+
     .only_section .only_img{
-        width: 250vw;
+        overflow: hidden;
+    }
+    .only_section .only_img img{
+        width: 200vw;
     }
 
     .event_section .event_content{
