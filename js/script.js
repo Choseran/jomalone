@@ -147,14 +147,19 @@ document.addEventListener("DOMContentLoaded", function () {
     for (const submenu of submenuList) {
         const submenuTitle = submenu.querySelector('.submenu_title');
         submenuTitle.addEventListener('click', function () {
-            for (const submenu of submenuList) {
+            const hasClass = submenu.classList.contains('active');
+            
+            if (hasClass) {
                 submenu.classList.remove('active');
+            } else {
+                for (const submenu of submenuList) {
+                    submenu.classList.remove('active');
+                }
+                submenu.classList.add('active');
             }
-            // toggle 되게... 하기
-            submenu.classList.add('active');
         });
     }
-
+    
     // ambassador section bg change
     const ambassadorSec = document.querySelector('.ambassador_section');
     const newSec = document.querySelector('.new_section');
