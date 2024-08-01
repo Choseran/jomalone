@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
         for (let i = 0; i < banners.length; i++) {
             const banner = banners[i];
-            banner.style.background = `url(./img/banner${i+1}.png) no-repeat center top / cover`
+            banner.style.background = `url(./img/banner${i + 1}.png) no-repeat center top / cover`
         }
     }
     bannerSlideBg();
@@ -14,21 +14,21 @@ document.addEventListener("DOMContentLoaded", function () {
     
     for (let i = 0; i < bestGoods.length; i++) {
         const goods = bestGoods[i];
-        goods.style.background = `url(./img/best${i+1}.png) no-repeat center bottom / cover`
+        goods.style.background = `url(./img/best${i + 1}.png) no-repeat center bottom / cover`
     }
     
     const newGoods = document.querySelectorAll(".newSwiper .goods_img");
     
     for (let i = 0; i < newGoods.length; i++) {
         const goods = newGoods[i];
-        goods.style.background = `url(./img/new${i+1}.png) no-repeat center bottom / cover`
+        goods.style.background = `url(./img/new${i + 1}.png) no-repeat center bottom / cover`
     }
     
     const onlyGoods = document.querySelectorAll(".only_goods .goods_img");
     
     for (let i = 0; i < onlyGoods.length; i++) {
         const goods = onlyGoods[i];
-        goods.style.background = `url(./img/only_online${i+1}.png) no-repeat center bottom / cover`
+        goods.style.background = `url(./img/only_online${i + 1}.png) no-repeat center bottom / cover`
     }
 
     // swiper
@@ -40,11 +40,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (windowWidth >= 768 && bannerSwiper == undefined) {
             bannerSwiper = new Swiper(".bannerSwiper", {
                 loop: true,
-                // autoplay: {
-                //     delay: 3500,
-                //     disableOnInteraction: false,
-                // },
-                speed : 1000,
+                autoplay: {
+                    delay: 3500,
+                    disableOnInteraction: false,
+                },
+                speed: 1000,
             });
         } else if (windowWidth < 768 && bannerSwiper != undefined) {
             bannerSwiper.destroy();
@@ -53,11 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     initBannerSwiper();
-    
-    window.addEventListener('resize', () => {
-        initBannerSwiper();
-        bannerSlideBg();
-    });
 
     let windowWidth = window.innerWidth;
     let newSwiper;
@@ -71,17 +66,19 @@ document.addEventListener("DOMContentLoaded", function () {
             spaceBetween: space,
             navigation: {
                 nextEl: ".swiper-button-next",
-              prevEl: ".swiper-button-prev",
+                prevEl: ".swiper-button-prev",
             },
         });
     }
 
     // submenu 상세 메뉴 열리기
     function submenuOpen() {
+        console.log(windowWidth);
         if (windowWidth < 767) {
             const submenuTitle = document.querySelectorAll('.submenu_title');
             for (const title of submenuTitle) {
                 title.addEventListener('click', function () {
+                    console.log('.');
                     const content = this.nextElementSibling;
                     const currentHeight = content.style.height;
                     for (const otherTitle of submenuTitle) {
@@ -95,11 +92,20 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 })
             }
-        } else if (windowWidth >= 1211) {
+        } else if (windowWidth <= 767 && windowWidth <= 1210) {
             const submenuList = document.querySelectorAll('.submenu_list > li');
             for (const list of submenuList) {
                 list.addEventListener('mouseenter', function () {
                     console.log('..');
+                    const content = this.querySelector('.submenu_link');
+                    content.style.height = '0';
+                });
+            }
+        } else if (windowWidth > 1210) {
+            const submenuList = document.querySelectorAll('.submenu_list > li');
+            for (const list of submenuList) {
+                list.addEventListener('mouseenter', function () {
+                    console.log('...');
                     const content = this.querySelector('.submenu_link');
                     content.style.height = (content.scrollHeight + 30) + 'px';
                 });
@@ -108,10 +114,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     content.style.height = '0';
                 });
             }
-        }
+        } 
     }
-    submenuOpen();
-
+    
     function responsiveNewSwiper() {
         if (windowWidth >= 1356) {
             initNewSwiper(4, 40)
@@ -125,9 +130,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     
     responsiveNewSwiper();
+    submenuOpen();
 
     window.addEventListener('resize', () => {
         windowWidth = window.innerWidth;
+        initBannerSwiper();
+        bannerSlideBg();
         responsiveNewSwiper();
         submenuOpen();
     });

@@ -456,9 +456,6 @@ footer .footer_list{
         opacity: 1;
         z-index: 2;
     }
-    /* .sub_menu .submenu_list>li:hover .submenu_link {
-        max-height: 500px;
-    } */
 }
 
 @media (max-width: 1649px){
@@ -509,12 +506,6 @@ footer .footer_list{
     .footer_list .footer_content{
         width: calc(33.333% - 20px);
     }
-}
-
-@media (hover:hover) and (max-width: 1210px) and (min-width:768px){
-    /* .sub_menu .submenu_list>li:hover .submenu_link {
-        max-height: 0;
-    } */
 }
 
 @media (max-width: 1046px){
