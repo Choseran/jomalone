@@ -71,8 +71,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // submenu 상세 메뉴 열리기
     function submenuOpen() {
         console.log(windowWidth);
+        const submenuList = document.querySelectorAll('.submenu_list > li');
+        const submenuTitle = document.querySelectorAll('.submenu_title');
         if (windowWidth < 767) {
-            const submenuTitle = document.querySelectorAll('.submenu_title');
             for (const title of submenuTitle) {
                 title.addEventListener('click', function () {
                     console.log('.');
@@ -89,8 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 })
             }
-        } else if (windowWidth >= 767 && windowWidth <= 1210) {
-            const submenuList = document.querySelectorAll('.submenu_list > li');
+        } else if (windowWidth > 768 && windowWidth < 1209) {
             for (const list of submenuList) {
                 list.addEventListener('mouseenter', function () {
                     console.log('..');
@@ -99,16 +99,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             }
         } else if (windowWidth > 1210) {
-            const submenuList = document.querySelectorAll('.submenu_list > li');
-            for (const list of submenuList) {
-                list.addEventListener('mouseenter', function () {
+            for (const listPc of submenuList) {
+                listPc.addEventListener('mouseenter', function () {
                     console.log('...');
-                    const content = this.querySelector('.submenu_link');
-                    content.style.height = (content.scrollHeight + 30) + 'px';
+                    const pcContent = this.querySelector('.submenu_link');
+                    pcContent.style.height = (pcContent.scrollHeight + 30) + 'px';
                 });
-                list.addEventListener('mouseleave', function () {
-                    const content = this.querySelector('.submenu_link');
-                    content.style.height = '0';
+                listPc.addEventListener('mouseleave', function () {
+                    console.log('....');
+                    const pcContent = this.querySelector('.submenu_link');
+                    pcContent.style.height = '0';
                 });
             }
         } 
