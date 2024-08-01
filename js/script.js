@@ -11,21 +11,18 @@ document.addEventListener("DOMContentLoaded", function () {
     bannerSlideBg();
     
     const bestGoods = document.querySelectorAll(".best_goods_content .goods_img");
-    
     for (let i = 0; i < bestGoods.length; i++) {
         const goods = bestGoods[i];
         goods.style.background = `url(./img/best${i + 1}.png) no-repeat center bottom / cover`
     }
     
     const newGoods = document.querySelectorAll(".newSwiper .goods_img");
-    
     for (let i = 0; i < newGoods.length; i++) {
         const goods = newGoods[i];
         goods.style.background = `url(./img/new${i + 1}.png) no-repeat center bottom / cover`
     }
     
     const onlyGoods = document.querySelectorAll(".only_goods .goods_img");
-    
     for (let i = 0; i < onlyGoods.length; i++) {
         const goods = onlyGoods[i];
         goods.style.background = `url(./img/only_online${i + 1}.png) no-repeat center bottom / cover`
@@ -92,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 })
             }
-        } else if (windowWidth <= 767 && windowWidth <= 1210) {
+        } else if (windowWidth >= 767 && windowWidth <= 1210) {
             const submenuList = document.querySelectorAll('.submenu_list > li');
             for (const list of submenuList) {
                 list.addEventListener('mouseenter', function () {
