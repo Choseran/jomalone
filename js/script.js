@@ -75,7 +75,43 @@ document.addEventListener("DOMContentLoaded", function () {
             },
         });
     }
-    
+
+    // submenu 상세 메뉴 열리기
+    function submenuOpen() {
+        if (windowWidth < 767) {
+            const submenuTitle = document.querySelectorAll('.submenu_title');
+            for (const title of submenuTitle) {
+                title.addEventListener('click', function () {
+                    const content = this.nextElementSibling;
+                    const currentHeight = content.style.height;
+                    for (const otherTitle of submenuTitle) {
+                        const otherContent = otherTitle.nextElementSibling;
+                        otherContent.style.height = '0';
+                    }
+                    if (currentHeight === '0px' || currentHeight === '') {
+                        content.style.height = (content.scrollHeight + 30) + 'px';
+                    } else {
+                        content.style.height = '0';
+                    }
+                })
+            }
+        } else if (windowWidth >= 1211) {
+            const submenuList = document.querySelectorAll('.submenu_list > li');
+            for (const list of submenuList) {
+                list.addEventListener('mouseenter', function () {
+                    console.log('..');
+                    const content = this.querySelector('.submenu_link');
+                    content.style.height = (content.scrollHeight + 30) + 'px';
+                });
+                list.addEventListener('mouseleave', function () {
+                    const content = this.querySelector('.submenu_link');
+                    content.style.height = '0';
+                });
+            }
+        }
+    }
+    submenuOpen();
+
     function responsiveNewSwiper() {
         if (windowWidth >= 1356) {
             initNewSwiper(4, 40)
@@ -93,6 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener('resize', () => {
         windowWidth = window.innerWidth;
         responsiveNewSwiper();
+        submenuOpen();
     });
 
     // submenu
@@ -141,24 +178,6 @@ document.addEventListener("DOMContentLoaded", function () {
             enableScroll();
         }
     });
-
-    const submenuList = document.querySelectorAll('.submenu_list>li');
-    
-    for (const submenu of submenuList) {
-        const submenuTitle = submenu.querySelector('.submenu_title');
-        submenuTitle.addEventListener('click', function () {
-            const hasClass = submenu.classList.contains('active');
-            
-            if (hasClass) {
-                submenu.classList.remove('active');
-            } else {
-                for (const submenu of submenuList) {
-                    submenu.classList.remove('active');
-                }
-                submenu.classList.add('active');
-            }
-        });
-    }
     
     // ambassador section bg change
     const ambassadorSec = document.querySelector('.ambassador_section');

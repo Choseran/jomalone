@@ -210,7 +210,7 @@ header.on .hamMenu span:last-child{
     margin-top: 32px;
     margin-bottom: -15px;
     text-align: center;
-    max-height: 0;
+    height: 0;
     overflow: hidden;
     transition: 1s;
 }
@@ -393,8 +393,8 @@ header.on .hamMenu span:last-child{
 }
 .top_btn {
     display: none;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     position: fixed;
     bottom: 90px;
     right: 70px;
@@ -456,9 +456,9 @@ footer .footer_list{
         opacity: 1;
         z-index: 2;
     }
-    .sub_menu .submenu_list>li:hover .submenu_link {
+    /* .sub_menu .submenu_list>li:hover .submenu_link {
         max-height: 500px;
-    }
+    } */
 }
 
 @media (max-width: 1649px){
@@ -472,9 +472,13 @@ footer .footer_list{
     footer .container{
         width: calc(100% - 10px);
     }
-
+    
     .bannerSwiper .banner_content{
         right: 3%;
+    }
+
+    .sub_menu .submenu_list{
+        margin-right: 0;
     }
 }
 @media (max-width: 1210px){
@@ -508,9 +512,9 @@ footer .footer_list{
 }
 
 @media (hover:hover) and (max-width: 1210px) and (min-width:768px){
-    .sub_menu .submenu_list>li:hover .submenu_link {
+    /* .sub_menu .submenu_list>li:hover .submenu_link {
         max-height: 0;
-    }
+    } */
 }
 
 @media (max-width: 1046px){
@@ -598,6 +602,15 @@ footer .footer_list{
         font-size: 2.2rem;
     }
 
+    .new_section .swiper-button-next,
+    .new_section .swiper-rtl .swiper-button-prev{
+        right: -35px !important;
+    }
+    .new_section .swiper-button-prev,
+    .new_section .swiper-rtl .swiper-button-next{
+        left: -35px !important;
+    }
+
     header .hamMenu{
         width: 20px;
         margin-bottom: -6px;
@@ -636,22 +649,20 @@ footer .footer_list{
     .sub_menu .submenu_list>li{
         margin-right: 0;
         width: 100%;
-        margin-bottom: 30px;
     }
     .sub_menu .submenu_title{
         text-align: left;
+        margin-bottom: 25px;
     }
     .sub_menu .submenu_link{
         margin-top: 0;
         margin-bottom: 0;
+        max-height: inherit;
+        height: 0;
     }
     .sub_menu .submenu_link a{
         display: block;
         text-align: left;
-    }
-    .sub_menu .active .submenu_link{
-        margin-top: 25px;
-        max-height: 500px;
     }
 
     .bannerSwiper{
@@ -704,8 +715,8 @@ footer .footer_list{
     .top_btn{
         width: 30px;
         height: 30px;
-        bottom: 50px;
-        right: 30px;
+        bottom: 40px;
+        right: 25px;
     }
 
     .footer_list .footer_title{
